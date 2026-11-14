@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#160d19">
+<title>بصمة السادس | جدولي الدراسي</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600;700&family=Baloo+Bhaijaan+2:wght@600;700;800&display=swap');
+:root{--bg:#100b12;--panel:#1c121c;--panel2:#251722;--line:#442536;--ink:#fff4f7;--muted:#c2aab5;--acc:#e64b72;--acc2:#a82f55;--green:#43b581;--gold:#e5b75d;--shadow:0 18px 55px #0006;--radius:22px}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;min-height:100vh;background:radial-gradient(90% 40% at 50% 0%,#51203955,transparent 70%),linear-gradient(180deg,#100b12,#1a1019 70%,#100b12);color:var(--ink);font:400 14px/1.7 "Readex Pro",Tahoma,sans-serif;padding:env(safe-area-inset-top) 15px calc(28px + env(safe-area-inset-bottom))}
+button,input,select{font:inherit}
+button{cursor:pointer}
+.app{max-width:760px;margin:auto}
+header{display:flex;align-items:center;justify-content:space-between;padding:18px 2px 14px}
+.brand{display:flex;align-items:center;gap:11px}
+.logo{width:44px;height:44px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(145deg,#f36b8b,#8e244a);box-shadow:0 8px 24px #c93c6a44;font:800 20px "Baloo Bhaijaan 2"}
+.brand b{font:800 19px "Baloo Bhaijaan 2";display:block;line-height:1.2}
+.brand small{color:var(--muted);font-size:11px}
+.iconbtn{border:1px solid var(--line);background:#ffffff09;color:var(--ink);border-radius:13px;width:42px;height:42px}
+.hero{padding:22px;border:1px solid #73334b;border-radius:26px;background:linear-gradient(125deg,#8d2d50,#3d1b31 65%,#271522);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;width:190px;height:190px;border:1px solid #ffffff16;border-radius:50%;left:-60px;top:-80px;box-shadow:0 0 0 22px #ffffff08,0 0 0 45px #ffffff05}
+.eyebrow{color:#f6c4d1;font-size:12px;font-weight:600}
+.hero h1{font:800 25px/1.35 "Baloo Bhaijaan 2";margin:6px 0}
+.hero p{color:#f0d5df;margin:0;max-width:460px;font-size:13px}
+.hero button{margin-top:17px;background:#fff;color:#69213c;border:0;border-radius:13px;padding:11px 17px;font-weight:700}
+.sectionhead{display:flex;justify-content:space-between;align-items:center;margin:23px 2px 12px}
+.sectionhead h2{font:700 18px "Baloo Bhaijaan 2";margin:0}
+.sectionhead span{font-size:11px;color:var(--muted)}
+.tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.tile{min-height:104px;text-align:right;border:1px solid var(--line);border-radius:19px;padding:15px;background:linear-gradient(145deg,#291a27,#1a121b);color:var(--ink);display:flex;flex-direction:column;justify-content:space-between;gap:12px;transition:.15s}
+.tile:active{transform:scale(.98)}
+.tile .sym{font-size:19px;color:#f16a8e}
+.tile b{font-size:14px}
+.tile small{display:block;color:var(--muted);font-size:11px}
+.tile.primary{border-color:#9a3c5b;background:linear-gradient(145deg,#52213a,#281723)}
+.view{display:none}
+.view.active{display:block}
+.topline{display:flex;align-items:center;gap:10px;margin:16px 0}
+.back{border:1px solid var(--line);background:#ffffff08;color:var(--ink);border-radius:12px;padding:9px 13px}
+.viewtitle{font:800 21px "Baloo Bhaijaan 2";margin:0}
+.sub{color:var(--muted);font-size:12px;margin-top:2px}
+.panel{background:linear-gradient(145deg,#211621,#191119);border:1px solid var(--line);border-radius:var(--radius);padding:16px;margin:12px 0;box-shadow:0 8px 28px #0002}
+.panel h3{margin:0 0 12px;font:700 16px "Baloo Bhaijaan 2"}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.field{display:flex;flex-direction:column;gap:6px;margin:9px 0}
+.field label{font-size:12px;color:#e5cbd5}
+.field input,.field select{width:100%;min-width:0;color:var(--ink);background:#100b12;border:1px solid #583044;border-radius:12px;padding:11px 10px;outline:none}
+.field input:focus,.field select:focus{border-color:var(--acc)}
+.field input::placeholder{color:#866b78}
+.btn{border:0;border-radius:13px;background:linear-gradient(135deg,#ed5d83,#b8335b);color:white;font-weight:700;padding:12px 16px}
+.btn.secondary{background:#ffffff0b;border:1px solid var(--line);color:var(--ink)}
+.btn.green{background:#247e5a}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.btnrow .btn{flex:1}
+.subject-row{display:grid;grid-template-columns:minmax(0,1fr) 105px 38px;gap:7px;margin:8px 0;align-items:center}
+.subject-row input{min-width:0;width:100%;background:#100b12;border:1px solid #583044;border-radius:11px;padding:10px;color:var(--ink)}
+.subject-row button{height:39px;border-radius:11px;border:1px solid #704054;background:#321827;color:#ff9ab2}
+.tabs{display:flex;gap:7px;margin:14px 0}
+.tab{flex:1;padding:10px 8px;border:1px solid var(--line);border-radius:12px;background:#ffffff08;color:var(--muted);font-weight:600}
+.tab.active{background:#7d2948;border-color:#b7476b;color:white}
+.daybar{display:flex;gap:7px;overflow:auto;padding:2px 0 8px}
+.daypill{white-space:nowrap;border:1px solid var(--line);border-radius:12px;padding:8px 12px;background:#ffffff08;color:var(--muted)}
+.daypill.active{background:#7d2948;color:white;border-color:#b7476b}
+.task{display:flex;align-items:center;gap:11px;padding:12px 0;border-bottom:1px solid #ffffff10}
+.task:last-child{border:0}
+.check{width:23px;height:23px;accent-color:var(--green);flex:none}
+.taskmain{flex:1;min-width:0}
+.taskmain b{display:block;font-size:13px}
+.taskmain small{color:var(--muted);font-size:11px}
+.time{font-size:11px;color:#f2a4b9;white-space:nowrap}
+.task.done .taskmain{text-decoration:line-through;opacity:.55}
+.break{padding:9px 12px;margin:7px 0;border:1px dashed #76516a;border-radius:11px;color:#d4b6c5;font-size:12px;background:#ffffff05}
+.empty{text-align:center;color:var(--muted);padding:24px 8px;font-size:13px}
+.statrow{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stat{padding:12px 7px;border-radius:14px;background:#ffffff08;text-align:center}
+.stat b{font-size:20px;display:block;color:#ff9ab2}
+.stat small{color:var(--muted);font-size:10px}
+.progress{height:8px;background:#ffffff12;border-radius:99px;overflow:hidden;margin-top:8px}
+.progress i{display:block;height:100%;background:linear-gradient(90deg,#e64b72,#f6a1b7);border-radius:99px}
+.note{font-size:11px;color:var(--muted);line-height:1.8}
+footer{text-align:center;color:#785c6b;font-size:10px;padding:25px 0 5px}
+.hidden{display:none!important}
+@media(min-width:620px){.tiles{grid-template-columns:repeat(3,minmax(0,1fr))}.hero{padding:28px}.hero h1{font-size:29px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+ <div class="brand"><div class="logo">ب</div><div><b>بصمة السادس</b><small>منصة الطالب الدراسية</small></div></div>
+ <button class="iconbtn" id="homeBtn" aria-label="الرئيسية">⌂</button>
+</header>
+
+<section id="home" class="view active">
+ <div class="hero">
+  <div class="eyebrow">أهلاً بك في بصمة السادس</div>
+  <h1>نظّم وقتك، وخلّ دراستك أوضح</h1>
+  <p>أنشئ جدولك الدراسي وتابع إنجازك اليومي والأسبوعي من داخل التطبيق، دون الانتقال إلى أي بوت.</p>
+  <button onclick="openSchedule()">افتح جدولي الدراسي ←</button>
+ </div>
+ <div class="sectionhead"><h2>الأقسام الرئيسية</h2><span>اختر القسم</span></div>
+ <div class="tiles">
+  <button class="tile" onclick="toast('قسم المواد والاختبارات يبقى ضمن واجهة التطبيق الأصلية عند دمج المشروع الكامل')"><span class="sym">▤</span><span><b>الاختبارات</b><small>المواد والمواضيع</small></span></button>
+  <button class="tile primary" onclick="openSchedule()"><span class="sym">▦</span><span><b>جدولي الدراسي</b><small>إنشاء ومتابعة الجدول</small></span></button>
+  <button class="tile" onclick="toast('قسم الملخصات')"><span class="sym">▧</span><span><b>ملخصاتي</b><small>ملفات المواد</small></span></button>
+  <button class="tile" onclick="toast('قسم مدينة الأوائل')"><span class="sym">♜</span><span><b>مدينة الأوائل</b><small>لوحة التميز</small></span></button>
+  <button class="tile" onclick="toast('قسم التحديات')"><span class="sym">◎</span><span><b>تحدي اليوم</b><small>ارفع مستوى إنجازك</small></span></button>
+  <button class="tile" onclick="toast('قسم الجديد')"><span class="sym">✧</span><span><b>جديدنا</b><small>آخر الإضافات</small></span></button>
+ </div>
+</section>
+
+<section id="schedule" class="view">
+ <div class="topline"><button class="back" onclick="showView('home')">→ رجوع</button><div><h1 class="viewtitle">جدولي الدراسي</h1><div class="sub">أنشئ جدولك داخل التطبيق</div></div></div>
+ <div id="setup" class="panel">
+  <h3>إعدادات يومك الدراسي</h3>
+  <div class="grid2">
+   <div class="field"><label>وقت الاستيقاظ</label><input id="wake" type="time" value="06:00"></div>
+   <div class="field"><label>وقت نهاية الدراسة</label><input id="sleep" type="time" value="22:00"></div>
+   <div class="field"><label>بداية الدوام (اختياري)</label><input id="schoolStart" type="time"></div>
+   <div class="field"><label>نهاية الدوام (اختياري)</label><input id="schoolEnd" type="time"></div>
+  </div>
+  <div class="field"><label>مدة جلسة الدراسة بالدقائق</label><select id="session"><option value="40">40 دقيقة</option><option value="50" selected>50 دقيقة</option><option value="60">60 دقيقة</option><option value="75">75 دقيقة</option><option value="90">90 دقيقة</option></select></div>
+  <div class="field"><label>مدة الاستراحة بالدقائق</label><select id="rest"><option value="5">5 دقائق</option><option value="10" selected>10 دقائق</option><option value="15">15 دقيقة</option><option value="20">20 دقيقة</option></select></div>
+  <div class="field"><label>المواد والوقت المطلوب لكل مادة بالدقائق</label></div>
+  <div id="subjects"></div>
+  <button class="btn secondary" style="width:100%" onclick="addSubject()">+ إضافة مادة</button>
+  <div class="note" style="margin-top:10px">أدخل الوقت الإجمالي الذي تريد تخصيصه لكل مادة خلال اليوم. يوزّع النظام الفترات على أوقاتك المتاحة، ويتجاوز وقت الدوام.</div>
+  <div class="btnrow"><button class="btn" onclick="generateSchedule()">إنشاء الجدول وحفظه</button><button class="btn secondary" onclick="loadDemo()">تجربة مثال</button></div>
+ </div>
+ <div id="planner" class="hidden">
+  <div class="panel">
+   <div class="statrow">
+    <div class="stat"><b id="totalTasks">0</b><small>فترات الدراسة</small></div>
+    <div class="stat"><b id="doneTasks">0</b><small>مكتملة</small></div>
+    <div class="stat"><b id="percent">0%</b><small>الإنجاز</small></div>
+   </div>
+   <div class="progress"><i id="progressFill" style="width:0%"></i></div>
+   <div class="btnrow"><button class="btn secondary" onclick="showSetup()">تعديل الإعدادات</button><button class="btn secondary" onclick="clearSchedule()">حذف الجدول</button></div>
+  </div>
+  <div class="tabs"><button class="tab active" id="dayTab" onclick="setMode('day')">جدول اليوم</button><button class="tab" id="weekTab" onclick="setMode('week')">جدول الأسبوع</button></div>
+  <div class="panel">
+   <div class="sectionhead" style="margin:0 0 10px"><h2 id="planHeading">خطة اليوم</h2><span id="planDate"></span></div>
+   <div id="dayPicker" class="daybar"></div>
+   <div id="planList"></div>
+  </div>
+  <div class="panel">
+   <h3>ملخص الإنجاز</h3>
+   <div id="subjectProgress"></div>
+  </div>
+ </div>
+</section>
+<footer>احمد حيدر | بصمة سادس</footer>
+</div>
+<div id="toast" style="position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#321827;border:1px solid #784157;color:#fff;padding:11px 16px;border-radius:12px;display:none;z-index:20;max-width:90%;text-align:center;font-size:12px"></div>
+<script>
+const $=id=>document.getElementById(id);
+const STORE='basma_schedule_v1';
+let state=loadState(),mode='day',selectedDay=0;
+function loadState(){try{return JSON.parse(localStorage.getItem(STORE)||'null')}catch(e){return null}}
+function saveState(){localStorage.setItem(STORE,JSON.stringify(state))}
+function toast(s){const t=$('toast');t.textContent=s;t.style.display='block';clearTimeout(toast.t);toast.t=setTimeout(()=>t.style.display='none',2300)}
+function showView(id){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===id))}
+function openSchedule(){showView('schedule');if(state&&state.days){$('setup').classList.add('hidden');$('planner').classList.remove('hidden');renderPlan()}else showSetup()}
+$('homeBtn').onclick=()=>showView('home');
+function addSubject(name='',minutes=60){const d=document.createElement('div');d.className='subject-row';d.innerHTML=`<input class="sname" placeholder="اسم المادة" value="${escapeHtml(name)}"><input class="smins" type="number" min="15" step="5" value="${minutes}" aria-label="الدقائق"><button type="button" title="حذف" onclick="this.parentElement.remove()">×</button>`;$('subjects').appendChild(d)}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function showSetup(){ $('setup').classList.remove('hidden');$('planner').classList.add('hidden'); if(!document.querySelector('.subject-row')){if(state?.subjects?.length)state.subjects.forEach(x=>addSubject(x.name,x.minutes));else{['الرياضيات','الفيزياء','الكيمياء'].forEach(x=>addSubject(x,60))}}}
+function loadDemo(){ $('wake').value='06:00';$('sleep').value='22:00';$('schoolStart').value='08:00';$('schoolEnd').value='13:00';$('subjects').innerHTML='';[['الرياضيات',90],['الفيزياء',90],['الكيمياء',60],['الأحياء',60],['الإنكليزي',45]].forEach(x=>addSubject(...x));toast('تم تحميل مثال قابل للتعديل')}
+function toMin(s){if(!s)return null;const [h,m]=s.split(':').map(Number);return h*60+m}
+function clock(m){m=(m+1440)%1440;return String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0')}
+function overlaps(a,b,c,d){return a<d&&b>c}
+function generateSchedule(){
+ const wake=toMin($('wake').value),end=toMin($('sleep').value),ss=toMin($('schoolStart').value),se=toMin($('schoolEnd').value);
+ if(wake===null||end===null||end<=wake){toast('تحقق من وقت الاستيقاظ ونهاية الدراسة');return}
+ if((ss===null)!==(se===null)||(ss!==null&&se<=ss)){toast('أدخل وقت الدوام كاملاً وبشكل صحيح');return}
+ const subjects=[...document.querySelectorAll('.subject-row')].map(r=>({name:r.querySelector('.sname').value.trim(),minutes:Math.max(0,Number(r.querySelector('.smins').value)||0)})).filter(x=>x.name&&x.minutes>0);
+ if(!subjects.length){toast('أضف مادة واحدة على الأقل');return}
+ const session=Number($('session').value),rest=Number($('rest').value),blocks=[];
+ let cursor=wake,si=0,remaining=subjects.map(s=>s.minutes),guard=0;
+ while(remaining.some(x=>x>0)&&cursor<end&&guard++<500){
+  if(ss!==null&&cursor>=ss&&cursor<se){cursor=se;continue}
+  if(ss!==null&&cursor<ss&&cursor+1>ss){cursor=ss;continue}
+  let idx=-1;for(let j=0;j<remaining.length;j++){const k=(si+j)%remaining.length;if(remaining[k]>0){idx=k;break}}
+  if(idx<0)break;
+  let available=end-cursor;
+  if(ss!==null&&cursor<ss)available=Math.min(available,ss-cursor);
+  const dur=Math.min(session,remaining[idx],available);
+  if(dur<15){cursor+=Math.max(1,dur);continue}
+  blocks.push({kind:'study',subject:subjects[idx].name,start:cursor,end:cursor+dur,done:false});
+  cursor+=dur;remaining[idx]-=dur;si=(idx+1)%subjects.length;
+  if(remaining.some(x=>x>0)&&cursor<end){
+   let br=rest;if(ss!==null&&cursor<ss&&cursor+br>ss)br=ss-cursor;
+   if(br>0){blocks.push({kind:'break',start:cursor,end:Math.min(cursor+br,end)});cursor+=br}
+  }
+ }
+ const unscheduled=subjects.map((s,i)=>({name:s.name,minutes:remaining[i]})).filter(x=>x.minutes>0);
+ if(!blocks.some(b=>b.kind==='study')){toast('لا توجد فترة متاحة للدراسة بعد احتساب الدوام');return}
+ const today=new Date();today.setHours(0,0,0,0);
+ const days=[];
+ for(let d=0;d<7;d++){const date=new Date(today);date.setDate(date.getDate()+d);days.push({date:date.toISOString().slice(0,10),blocks:blocks.map((b,i)=>({...b,id:`${d}-${i}`,done:false}))})}
+ state={settings:{wake:$('wake').value,sleep:$('sleep').value,schoolStart:$('schoolStart').value,schoolEnd:$('schoolEnd').value,session,rest},subjects,days,unscheduled,created:Date.now()};
+ saveState();selectedDay=0;mode='day';$('setup').classList.add('hidden');$('planner').classList.remove('hidden');renderPlan();
+ if(unscheduled.length)toast('تم إنشاء الجدول. بعض الوقت المطلوب لم يتسع له اليوم؛ راجع الملخص.');
+}
+function setMode(m){mode=m;$('dayTab').classList.toggle('active',m==='day');$('weekTab').classList.toggle('active',m==='week');renderPlan()}
+function fmtDate(s){const d=new Date(s+'T12:00:00');return new Intl.DateTimeFormat('ar-IQ',{weekday:'short',day:'numeric',month:'short'}).format(d)}
+function renderPlan(){
+ if(!state)return;
+ const all=state.days.flatMap(d=>d.blocks).filter(b=>b.kind==='study'),done=all.filter(b=>b.done).length,pct=all.length?Math.round(done/all.length*100):0;
+ $('totalTasks').textContent=all.length;$('doneTasks').textContent=done;$('percent').textContent=pct+'%';$('progressFill').style.width=pct+'%';
+ $('planHeading').textContent=mode==='day'?'خطة اليوم':'خطة الأسبوع';
+ $('dayPicker').classList.toggle('hidden',mode==='week');
+ $('dayPicker').innerHTML=state.days.map((d,i)=>`<button class="daypill ${i===selectedDay?'active':''}" onclick="selectedDay=${i};renderPlan()">${i===0?'اليوم':fmtDate(d.date)}</button>`).join('');
+ $('planDate').textContent=mode==='day'?fmtDate(state.days[selectedDay].date):'7 أيام';
+ const list=mode==='day'?renderBlocks(state.days[selectedDay]):state.days.map((d,i)=>`<div style="margin:14px 0 7px;font-weight:700;color:#ff9ab2">${i===0?'اليوم':fmtDate(d.date)}</div>${renderBlocks(d)}`).join('');
+ $('planList').innerHTML=list||'<div class="empty">لا توجد فترات في هذا اليوم</div>';
+ const prog=state.subjects.map(s=>{const bs=state.days[0].blocks.filter(b=>b.kind==='study'&&b.subject===s.name),dn=bs.filter(b=>b.done).length;return `<div style="margin:12px 0"><div style="display:flex;justify-content:space-between"><b>${escapeHtml(s.name)}</b><small>${dn}/${bs.length} فترة</small></div><div class="progress"><i style="width:${bs.length?dn/bs.length*100:0}%"></i></div></div>`}).join('');
+ $('subjectProgress').innerHTML=prog+(state.unscheduled?.length?`<p class="note">وقت لم يتسع له الجدول: ${state.unscheduled.map(x=>escapeHtml(x.name)+' ('+x.minutes+' دقيقة)').join('، ')}</p>`:'');
+}
+function renderBlocks(day){return day.blocks.map((b,i)=>b.kind==='break'?`<div class="break">استراحة · ${clock(b.start)} – ${clock(b.end)}</div>`:`<div class="task ${b.done?'done':''}"><input class="check" type="checkbox" ${b.done?'checked':''} onchange="toggleTask('${day.date}','${b.id}',this.checked)"><div class="taskmain"><b>${escapeHtml(b.subject)}</b><small>جلسة دراسية</small></div><span class="time">${clock(b.start)} – ${clock(b.end)}</span></div>`).join('')}
+function toggleTask(date,id,checked){const day=state.days.find(d=>d.date===date);const b=day?.blocks.find(x=>x.id===id);if(b){b.done=checked;saveState();renderPlan()}}
+function clearSchedule(){if(!confirm('هل تريد حذف الجدول المحفوظ؟'))return;state=null;localStorage.removeItem(STORE);$('planner').classList.add('hidden');$('setup').classList.remove('hidden');$('subjects').innerHTML='';['الرياضيات','الفيزياء','الكيمياء'].forEach(x=>addSubject(x,60));toast('تم حذف الجدول')}
+if(state){if(state.settings){$('wake').value=state.settings.wake;$('sleep').value=state.settings.sleep;$('schoolStart').value=state.settings.schoolStart||'';$('schoolEnd').value=state.settings.schoolEnd||'';$('session').value=state.settings.session;$('rest').value=state.settings.rest}if(state.subjects){$('subjects').innerHTML='';state.subjects.forEach(x=>addSubject(x.name,x.minutes))}}
+else ['الرياضيات','الفيزياء','الكيمياء'].forEach(x=>addSubject(x,60));
+</script>
+</body>
+</html>
